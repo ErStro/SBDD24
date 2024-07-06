@@ -32,5 +32,5 @@ obabel na-ligands.sdf -O ligand.pdbqt -m
 
 Batch_Docking is the folder where I have the Python script, the 1a4g pbd and pdbtq files, the sdf files for the ligands and the decoys, and the folders of Ligands and Decoys, which contain the pdbqt files for ligands and decoys.
 
-
+Note: the python code must be modified to adjust to the folders and directories of the user, as well as adjusting the parameters of vina depending on the target (center and size)
 Note: addtotors is used to ensure that rotatable bonds are correctly identified and marked in the receptor, and then correctly identified in the file conversion.
