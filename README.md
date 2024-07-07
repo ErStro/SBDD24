@@ -9,6 +9,7 @@ This is done using the target 1a4g
 - Extract sdf of ligands and decoys
 - Download the python script for batch docking and vs ranking
 - Put the sdf and pdb files in the folder with your python code
+- Check the pdb file in PyMOL, sometimes the receptor pdb comes with ligands attached, then we need to remove the ligands with PyMOL and save it as a new pdb file
 - Use OpenBabel to prepare the pdb receptor file by adding hydrogens and partial charges using this command in the console:
 
 (sbdd24) <receptor folder>obabel 1a4g.pdb -O 1a4g_prepared.pdb -p --addtotors --partialcharge
