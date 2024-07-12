@@ -6,6 +6,7 @@ import tempfile
 project_dir = "/mnt/c/Work/AMI/SBDD_project"
 experimental_ligand_file = os.path.join(project_dir, "experimental_ligand_redocked.pdbqt")
 ligands_dir = os.path.join(project_dir, "ligands")
+output_file = os.path.join(project_dir, "RMSD_results_obabel.txt")  # Define your output file path with the new name
 
 # Function to calculate RMSD and save aligned ligand to temporary file
 def calculate_rmsd(predicted, experimental):
@@ -38,6 +39,12 @@ for ligand in ligand_files:
 # Sort the results by RMSD
 rmsd_results.sort(key=lambda x: x[1])  # Sort by RMSD value
 
-# Print the results
-for ligand, rmsd, aligned_ligand in rmsd_results:
-    print(f"Ligand: {os.path.basename(ligand)}, RMSD: {rmsd:.3f} Å, Aligned Ligand: {os.path.basename(aligned_ligand)}")
+# Print and write the results to the output file
+with open(output_file, 'w') as f:
+    f.write("RMSD Results:\n")
+    for ligand, rmsd, aligned_ligand in rmsd_results:
+        result_str = f"Ligand: {os.path.basename(ligand)}, RMSD: {rmsd:.3f} Å, Aligned Ligand: {os.path.basename(aligned_ligand)}\n"
+        print(result_str.strip())  # Print to console
+        f.write(result_str)  # Write to file
+
+print(f"\nResults saved to {output_file}")
